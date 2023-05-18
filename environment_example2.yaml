@@ -1,0 +1,15 @@
+Stack1:
+  name: IAM
+  dependencies: []
+
+Stack5:
+  name: WAF
+  dependencies: [Network, Audit]
+
+Stack3:
+  name: Network
+  dependencies: [IAM]
+
+Stack7:
+  name: Fargate
+  dependencies: [Network, WAF]

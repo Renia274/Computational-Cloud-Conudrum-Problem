@@ -1,0 +1,39 @@
+Stack1:
+  name: IAM
+  dependencies: []
+
+Stack2:
+  name: Audit
+  dependencies: [IAM]
+
+Stack3:
+  name: Network
+  dependencies: [IAM]
+
+Stack4:
+  name: Firewall
+  dependencies: [Network]
+
+Stack5:
+  name: WAF
+  dependencies: [Network, Audit]
+
+Stack6:
+  name: Kubernetes
+  dependencies: [Network, Firewall, WAF, IDP]
+
+Stack7:
+  name: Fargate
+  dependencies: [Network, WAF]
+
+Stack8:
+  name: ApiGateway
+  dependencies: [Network, Firewall, IDP]
+
+Stack9:
+  name: PKI
+  dependencies: [IAM, Audit]
+
+Stack10:
+  name: IDP
+  dependencies: [PKI, Network]
